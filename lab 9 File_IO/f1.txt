@@ -1,4 +1,0 @@
-Hello World form Python.
-This is object oriented Programming language.
-Python is very easy language compare to another languages.
-Byy Python...

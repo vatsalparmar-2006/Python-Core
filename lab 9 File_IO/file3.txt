@@ -1,6 +1,0 @@
-Greeting Words,
-Hello
-Hi
-Hey
-Greetings
-Welcome
