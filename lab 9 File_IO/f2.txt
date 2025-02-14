@@ -1,4 +1,0 @@
-Hello World form Java.
-This is object oriented Programming language.
-Java is tough language compare to another languages.
-Byy Java...
