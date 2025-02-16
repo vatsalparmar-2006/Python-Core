@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assignments</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* background: linear-gradient(to right, #42a5f5, #478ed1); */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .assignment-container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #202020;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 15px;
+            /* text-align: left; */
+            border-bottom: 1px solid #dddddd;
+            text-align: center;
+        }
+
+        /* td {
+            
+        } */
+
+        table th {
+            background-color: #f4f4f4;
+            color: #333333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .view-btn {
+            background: linear-gradient(to right, #42a5f5, #42a5f5);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: linear-gradient(to right, #478ed1, #42a5f5);
+        }
+    </style>
+</head>
+<body>
+    <div class="assignment-container">
+        <h1>View Assignments</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Assignment Title</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>Integration</td>
+                    <td>2025-02-15</td>
+                    <td><button class="view-btn" onclick="viewAssignment('Algebra Homework')">View</button></td>
+                </tr>
+                <tr>
+                    <td>Science</td>
+                    <td>Electicity</td>
+                    <td>2025-02-18</td>
+                    <td><button class="view-btn" onclick="viewAssignment('Physics Lab Report')">View</button></td>
+                </tr>
+                <tr>
+                    <td>Chemistry</td>
+                    <td>Acids and Bases</td>
+                    <td>2025-02-20</td>
+                    <td><button class="view-btn" onclick="viewAssignment('World War II Essay')">View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function viewAssignment(title) {
+            alert(`Viewing details for: ${title}`);
+        }
+    </script>
+</body>
+</html>

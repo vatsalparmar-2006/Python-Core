@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* background: linear-gradient(to right, #2575fc, #2575fc); */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .attendance-container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            max-width: 650px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333333;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        table th {
+            background-color: #2575fc;
+            color: #ffffff;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-select {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .status-select:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #2575fc, #2575fc);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(to right, #2575fc, #2575fc);
+        }
+
+        .message {
+            display: none;
+            padding: 10px;
+            margin-top: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .message.success {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .message.error {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="attendance-container">
+        <h1>Add Attendance</h1>
+        <form id="attendance-form">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Roll Number</th>
+                        <th style="text-align: center;">Student Name</th>
+                        <th style="text-align: center;">Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">Stu 1</td>
+                        <td>
+                            <select class="status-select" name="attendance[JohnDoe]">
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td style="text-align: center;">Stu 2</td>
+                        <td>
+                            <select class="status-select" name="attendance[JaneSmith]">
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td style="text-align: center;">Stu 3</td>
+                        <td>
+                            <select class="status-select" name="attendance[JaneSmith]">
+                                <option value="Present" >Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+            <button type="submit" class="submit-btn">Submit Attendance</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('attendance-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.classList.remove('success', 'error');
+
+            const formData = new FormData(this);
+            let allSelected = true;
+
+            formData.forEach((value, key) => {
+                if (!value) {
+                    allSelected = false;
+                }
+            });
+
+            if (allSelected) {
+                messageDiv.textContent = 'Attendance submitted successfully!';
+                messageDiv.classList.add('success');
+            } else {
+                messageDiv.textContent = 'Please select attendance for all students.';
+                messageDiv.classList.add('error');
+            }
+
+            messageDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
